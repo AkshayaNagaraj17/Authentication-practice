@@ -69,8 +69,8 @@ app.get("/me",function(req,res)
 {
     const token=req.headers.token
     const decoded=jwt.verify(token,JWT_SECRET)  //converting jwt to username
-    const uname=decoded.uname
-    const user=users.find(user=>user.uname=== decoded.uname)
+    const uname1=decoded.uname
+    const user=users.find(user=>user.uname=== uname1)
     if(user)
     {
         res.json({
