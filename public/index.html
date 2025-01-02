@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth website</title>
+</head>
+<script src="
+https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js
+"></script>
+
+<script>
+    async function signup()
+    {
+        const uname=document.getElementById("signup-uname").value;
+        const pword=document.getElementById("signup-pword").value;
+
+       await axios.post("http://localhost:3005/signup",{
+            uname:uname,
+            pword:pword
+        })
+        alert ("You are signed up")
+    }
+
+    async function signin()
+    {
+        const uname=document.getElementById("signin-uname").value;
+        const pword=document.getElementById("signin-pword").value;
+
+       const response=await axios.post("http://localhost:3005/sign-in",{
+            uname:uname,
+            pword:pword
+        })
+        localStorage.setItem("token",response.data.token)
+        alert ("You are signed in")
+    }
+
+</script>
+<body>
+    <div>
+        Signup
+        <input id="signup-uname"type="text" name="uname" placeholder="uname">
+        <input id="signup-pword"type="text" name="pword" placeholder="pword">
+        <button onclick="signup()">Submit</button>
+    </div>
+
+    <div>
+        SignIn
+        <input  id="signin-uname" type="text" name="uname" placeholder="uname">
+        <input  id="signin-pword" type="text" name="pword" placeholder="pword">
+        <button onclick="signin()">Submit</button>
+    </div>
+    <div>
+        User info :
+        <div id="info"></div>
+    </div>
+
+    <button onclick="logout()">Logout</button>
+</body>
+</html>
