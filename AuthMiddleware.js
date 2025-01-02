@@ -1,7 +1,7 @@
 //finstal jsonwebtoken
 const express=require("express")
 const app=express()
-const path=require("path")
+const path=require("path")  //this to send file from html 
 const JWT_SECRET="randomakshparis"
 const jwt=require("jsonwebtoken")
 app.use(express.json())

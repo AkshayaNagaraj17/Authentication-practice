@@ -35,6 +35,19 @@ https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js
         alert ("You are signed in")
     }
 
+    async function uInfo()
+    {
+        const response=await axios.get("http://localhost:3005/me",
+            {
+                headers:{
+                    token:localStorage.getItem("token")
+                }
+            }
+        )
+        document.getElementById("info").innerHTML="username :"+response.data.uname
+    }
+    uInfo()
+
 </script>
 <body>
     <div>
